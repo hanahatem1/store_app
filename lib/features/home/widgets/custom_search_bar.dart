@@ -10,7 +10,7 @@ class CustomSearchBar extends StatelessWidget {
       height: 40,
       width: 320,
       child: TextField(
-        cursorColor: AppColors.secondryColor,
+        cursorColor: AppColors.greyColor,
         decoration: InputDecoration(
             hintText: 'Search product',
             hintStyle:const TextStyle(color: AppColors.greyColor),
