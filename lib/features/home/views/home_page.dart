@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/features/home/widgets/custom_app_bar.dart';
 import 'package:shopping_app/features/home/widgets/custom_circle_container.dart';
 import 'package:shopping_app/features/home/widgets/custom_gridview_item.dart';
 import 'package:shopping_app/features/home/widgets/custom_search_bar.dart';
@@ -10,45 +11,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.backGroundColor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 30),
+        padding:  EdgeInsets.symmetric(horizontal: 14, vertical: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Find Your',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: AppColors.textColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'Favourites product',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: AppColors.textColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                CustomCircleContainer(
-                  color: AppColors.cardColor,
-                  child: Image.asset('assets/images/proicons_bell.png'),
-                )
-              ],
-            ),
-            const SizedBox(
+           CustomAppBar(),
+             SizedBox(
               height: 40,
             ),
-            const Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomSearchBar(),
@@ -60,14 +34,14 @@ class HomePage extends StatelessWidget {
                     ))
               ],
             ),
-            const SizedBox(
+             SizedBox(
               height: 25,
             ),
-            const ListViewCategories(),
-            const SizedBox(
+             ListViewCategories(),
+             SizedBox(
               height: 25,
             ),
-          const CustomGridviewItem()
+           CustomGridviewItem()
           ],
         ),
       ),
