@@ -6,64 +6,72 @@ class CustomGridviewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.cardColor,
+    return  Container(
+      decoration: BoxDecoration(
+        color: AppColors.cardColor,
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                'assets/images/b.jpg',
-                height: 150,
-                width: 150,
-                fit: BoxFit.cover,
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(14),
+                child: Image.asset(
+                  'assets/images/b.jpg',
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-            const SizedBox(
-              height: 8,
-            ),
-            const Text(
-              'Bijama',
-              style: TextStyle(
+            const SizedBox(height: 8),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                'Bijama',
+                style: TextStyle(
                   color: AppColors.textColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-            const SizedBox(
-              height: 8,
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      border: Border.all(color: AppColors.primaryColor)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(6),
-                    child: Text(
-                      '+ Add to cart ',
-                      style: TextStyle(
-                        color: AppColors.primaryColor,
-                        fontSize: 14,
+            const SizedBox(height: 6),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 6),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(24),
+                        border: Border.all(color: AppColors.primaryColor),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          '+ Add to cart',
+                          style: TextStyle(
+                            color: AppColors.primaryColor,
+                            fontSize: 12,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                const Text(
-                  '\$49',
-                  style: TextStyle(
+                  const SizedBox(width: 8),
+                  const Text(
+                    '\$49',
+                    style: TextStyle(
                       color: AppColors.secondryColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                )
-              ],
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ),
