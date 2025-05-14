@@ -8,5 +8,6 @@ class AppColors {
   static const Color cardColor = Color(0xffFFFFFF);
   static const Color backGroundColor = Color.fromARGB(255, 247, 245, 246);
   static const Color greyColor = Color.fromARGB(255, 223, 222, 222);
+  static const Color pinkColor = Color.fromARGB(255, 248, 210, 223);
 
 }
