@@ -13,13 +13,14 @@ class CustomContainerCount extends StatelessWidget {
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Icon(
               Icons.remove,
               size: 17,
             ),
+            SizedBox(width: 3,),
             Text('1'),
+            SizedBox(width: 3,),
             Icon(
               Icons.add,
               size: 17,

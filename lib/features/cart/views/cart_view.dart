@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
-import 'package:shopping_app/features/cart/widgets/custom_card_cart_item.dart';
+import 'package:shopping_app/features/cart/widgets/custom_listview_cart.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -19,11 +19,7 @@ class CartView extends StatelessWidget {
       ),
       body:const Padding(
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-        child: Column(
-          children: [
-          CustomCardCartItem()
-          ],
-        ),
+        child: CustomListviewCart()
       ),
     );
   }
