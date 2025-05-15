@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/features/details/widgets/colors_row.dart';
 import 'package:shopping_app/features/details/widgets/details_bottom_bar.dart';
 import 'package:shopping_app/features/details/widgets/image_container.dart';
 
@@ -41,6 +42,8 @@ class Detailspage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 15,),
+           ColorsRow(),
+            SizedBox(height: 6,),
            Text('About this',style: TextStyle(fontSize:16 ),),
            SizedBox(height: 10,),
            Text('A soft and breathable cotton pajama set designed to provide maximum comfort during your sleep. Its lightweight fabric keeps you cool on warm nights, while the relaxed fit allows for easy movement and a cozy feel.'),
