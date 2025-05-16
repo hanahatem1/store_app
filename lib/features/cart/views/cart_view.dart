@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/features/cart/widgets/cart_bottom_bar.dart';
 import 'package:shopping_app/features/cart/widgets/custom_listview_cart.dart';
 
 class CartView extends StatelessWidget {
@@ -12,15 +13,16 @@ class CartView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.backGroundColor,
         title: const Text(
-          'Shoppin Cart',
+          'Shopping Cart',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
       body:const Padding(
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-        child: CustomListviewCart()
+        child: CustomListviewCart(),
       ),
+      bottomNavigationBar:const CartBottomBar()
     );
   }
 }

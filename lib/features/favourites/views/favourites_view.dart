@@ -12,7 +12,7 @@ class FavouritesView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.backGroundColor,
         centerTitle: true,
-        title:const Text('Favouites',style: TextStyle(fontWeight: FontWeight.bold),),
+        title:const Text('Favourites',style: TextStyle(fontWeight: FontWeight.bold),),
       ),
       body:const Padding(
         padding: EdgeInsets.symmetric(horizontal:12,vertical: 12),
