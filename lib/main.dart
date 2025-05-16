@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopping_app/features/details/presentation/views/details_page.dart';
 import 'package:shopping_app/features/home/data/home_cubit/home_cubit.dart';
 import 'package:shopping_app/features/home/presentation/widgets/home_navigate.dart';
 
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       create: (context) => HomeCubit()..featchHomeData(),
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:Detailspage(),
+        home:HomeNavigate(),
       ),
     );
   }
