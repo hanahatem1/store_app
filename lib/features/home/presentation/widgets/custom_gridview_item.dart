@@ -32,7 +32,9 @@ class CustomGridviewItem extends StatelessWidget {
              Padding(
               padding:const EdgeInsets.symmetric(horizontal: 8),
               child: Text(
-                product.title,
+                product.title, 
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style:const TextStyle(
                   color: AppColors.textColor,
                   fontSize: 14,

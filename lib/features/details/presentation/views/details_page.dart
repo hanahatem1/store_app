@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
-import 'package:shopping_app/features/details/widgets/colors_row.dart';
-import 'package:shopping_app/features/details/widgets/details_bottom_bar.dart';
-import 'package:shopping_app/features/details/widgets/image_container.dart';
+import 'package:shopping_app/features/details/presentation/widgets/colors_row.dart';
+import 'package:shopping_app/features/details/presentation/widgets/details_bottom_bar.dart';
+import 'package:shopping_app/features/details/presentation/widgets/image_container.dart';
 
 class Detailspage extends StatelessWidget {
   const Detailspage({super.key});
