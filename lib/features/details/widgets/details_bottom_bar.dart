@@ -21,7 +21,7 @@ class DetailsBottomBar extends StatelessWidget {
               style: TextStyle(fontSize: 18, color: AppColors.cardColor),
             ),
           ),
-         Image.asset('assets/images/Component 2.png',height: 42,width: 42,)
+         Image.asset('assets/images/unheart.png',height: 42,width: 42,)
         ],
       ),
     );

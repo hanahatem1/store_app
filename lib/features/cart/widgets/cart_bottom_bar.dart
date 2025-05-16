@@ -7,7 +7,7 @@ class CartBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
         width: double.infinity,
         decoration:const BoxDecoration(
           color: AppColors.cardColor

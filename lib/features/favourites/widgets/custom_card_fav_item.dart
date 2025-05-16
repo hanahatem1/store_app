@@ -47,7 +47,7 @@ class CustomCardFavItem extends StatelessWidget {
                       width: 90,
                     ),
                     Image.asset(
-                      'assets/images/Component 1.png',
+                      'assets/images/heart.png',
                       height: 30,
                       width: 30,
                     ),
