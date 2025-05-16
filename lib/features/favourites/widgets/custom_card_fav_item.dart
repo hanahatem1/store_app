@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
-import 'package:shopping_app/features/home/widgets/custom_button.dart';
+import 'package:shopping_app/features/home/presentation/widgets/custom_button.dart';
 
 class CustomCardFavItem extends StatelessWidget {
   const CustomCardFavItem({super.key});

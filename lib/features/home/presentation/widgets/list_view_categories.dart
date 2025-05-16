@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/features/home/widgets/custom_card_categories.dart';
+import 'package:shopping_app/features/home/presentation/widgets/custom_card_categories.dart';
 
 class ListViewCategories extends StatelessWidget {
   const ListViewCategories({super.key});

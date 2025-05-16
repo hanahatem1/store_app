@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/features/home/widgets/home_navigate.dart';
+import 'package:shopping_app/features/home/presentation/widgets/home_navigate.dart';
 
 void main() {
   runApp(const MyApp());

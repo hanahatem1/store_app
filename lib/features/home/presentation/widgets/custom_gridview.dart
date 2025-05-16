@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/features/home/widgets/custom_gridview_item.dart';
+import 'package:shopping_app/features/home/presentation/widgets/custom_gridview_item.dart';
 
 class CustomGridview extends StatelessWidget {
   const CustomGridview({super.key});

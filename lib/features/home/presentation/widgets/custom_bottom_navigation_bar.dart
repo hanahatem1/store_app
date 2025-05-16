@@ -1,7 +1,7 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
-import 'package:shopping_app/features/home/widgets/minmize_tab.dart';
+import 'package:shopping_app/features/home/presentation/widgets/minmize_tab.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
