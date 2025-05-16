@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/features/home/data/models/product_model.dart';
 
 class CustomGridviewItem extends StatelessWidget {
-  const CustomGridviewItem({super.key});
-
+  const CustomGridviewItem({super.key,required this.product});
+  
+ final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return  Container(
@@ -19,19 +21,19 @@ class CustomGridviewItem extends StatelessWidget {
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(14),
-                child: Image.asset(
-                  'assets/images/b.jpg',
+                child: Image.network(
+                  product.image,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             const SizedBox(height: 8),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
+             Padding(
+              padding:const EdgeInsets.symmetric(horizontal: 8),
               child: Text(
-                'Bijama',
-                style: TextStyle(
+                product.title,
+                style:const TextStyle(
                   color: AppColors.textColor,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -62,9 +64,9 @@ class CustomGridviewItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  const Text(
-                    '\$49',
-                    style: TextStyle(
+                   Text(
+                    '\$${product.price}',
+                    style:const TextStyle(
                       color: AppColors.secondryColor,
                       fontSize: 14,
                       fontWeight: FontWeight.bold,

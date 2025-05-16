@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/features/home/data/home_cubit/home_cubit.dart';
 import 'package:shopping_app/features/home/presentation/widgets/custom_app_bar.dart';
 import 'package:shopping_app/features/home/presentation/widgets/custom_circle_container.dart';
 import 'package:shopping_app/features/home/presentation/widgets/custom_gridview.dart';
@@ -11,19 +13,19 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       backgroundColor: AppColors.backGroundColor,
       body: SingleChildScrollView(
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 14, vertical: 30),
+          padding:const EdgeInsets.symmetric(horizontal: 14, vertical: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             CustomAppBar(),
-               SizedBox(
+              const CustomAppBar(),
+              const SizedBox(
                 height: 40,
               ),
-               Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomSearchBar(),
@@ -35,17 +37,27 @@ class HomePage extends StatelessWidget {
                       ))
                 ],
               ),
-               SizedBox(
+              const SizedBox(
                 height: 25,
               ),
-              ListViewCategories(),
-              CustomGridview()
-            
+             const ListViewCategories(),
+              BlocBuilder<HomeCubit, HomeState>(
+                builder: (context, state) {
+                   if (state is HomeLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is HomeSuccess) {
+                    return CustomGridview(products: state.products);
+                  } else if (state is HomeFailure) {
+                    return Center(child: Text(state.errMessage));
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                },
+              )
             ],
           ),
         ),
       ),
-      
     );
   }
 }
