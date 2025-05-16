@@ -19,7 +19,7 @@ class CartView extends StatelessWidget {
         centerTitle: true,
       ),
       body:const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        padding: EdgeInsets.symmetric(horizontal: 12),
         child: CustomListviewCart(),
       ),
       bottomNavigationBar:const CartBottomBar()
