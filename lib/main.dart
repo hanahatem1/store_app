@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopping_app/features/auth/sign_in/presentation/views/login_page.dart';
 import 'package:shopping_app/features/home/data/home_cubit/home_cubit.dart';
-import 'package:shopping_app/features/home/presentation/widgets/home_navigate.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       create: (context) => HomeCubit()..featchHomeData(),
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:HomeNavigate(),
+        home:LoginPage(),
       ),
     );
   }
