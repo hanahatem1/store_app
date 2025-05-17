@@ -11,10 +11,13 @@ final ProductDetailsModel product;
     return Stack(children: [
       ClipRRect(
         borderRadius: BorderRadius.circular(12),
-        child: Image.network(
-          product.image,
-          width: double.infinity,
-          fit: BoxFit.cover,
+        child: Center(
+          child: Image.network(
+            product.image,
+            width:360,
+            height:360,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
        Positioned(

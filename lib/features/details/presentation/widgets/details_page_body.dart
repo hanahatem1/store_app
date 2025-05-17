@@ -23,7 +23,6 @@ class DetailsPageBody extends StatelessWidget {
           );
         } else if (state is DetailsSuccess) {
           final product = state.product;
-
         return Scaffold(
           backgroundColor: AppColors.backGroundColor,
           body: SingleChildScrollView(
@@ -41,10 +40,12 @@ class DetailsPageBody extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        product.title,
-                        style: const TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
+                      Expanded(
+                        child: Text(
+                          product.title,
+                          style: const TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
                       ),
                       Row(
                         children: [
