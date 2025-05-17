@@ -9,10 +9,12 @@ class SplashPageBody extends StatefulWidget {
 }
 
 class _SplashPageBodyState extends State<SplashPageBody> {
+  @override
   void initState() {
     super.initState();
 
     Future.delayed(const Duration(seconds: 1), () {
+      if(!mounted) return;
       Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => const LoginPage()),
       );
