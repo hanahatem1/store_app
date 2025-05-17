@@ -57,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       // You could also navigate directly if you want
                     }
                   },
-                  text: 'Register',
+                  text: 'Create Account',
                 ),
                 const SizedBox(height: 50),
                 Row(
