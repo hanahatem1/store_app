@@ -7,7 +7,7 @@ import 'package:shopping_app/features/home/presentation/widgets/custom_bottom_na
 import 'package:shopping_app/features/profile/views/profile_view.dart';
 
 class HomeNavigate extends StatefulWidget {
-  const HomeNavigate({super.key});
+  const HomeNavigate({super.key,});
 
   @override
   State<HomeNavigate> createState() => _HomeNavigateState();

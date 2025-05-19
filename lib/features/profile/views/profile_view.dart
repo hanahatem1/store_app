@@ -9,7 +9,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: AppColors.backGroundColor,
+      backgroundColor: AppColors.secondbackGroundColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 12),

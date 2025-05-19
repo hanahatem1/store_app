@@ -56,7 +56,7 @@ class CustomCardFavItem extends StatelessWidget {
                     )
                   ],
                 ),
-                const CustomButton()
+                //const CustomButton()
               ],
             ),
           ],

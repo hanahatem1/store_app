@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
 import 'package:shopping_app/features/details/presentation/views/details_page.dart';
 import 'package:shopping_app/features/home/data/models/product_model.dart';
+import 'package:shopping_app/features/home/presentation/widgets/custom_button.dart';
 
 class CustomGridviewItem extends StatelessWidget {
   const CustomGridviewItem({super.key, required this.product});
@@ -59,22 +60,7 @@ class CustomGridviewItem extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(3),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        border: Border.all(color: AppColors.primaryColor),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          '+ Add to cart',
-                          style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ),
+                    child: CustomButton(product: product)
                   ),
                   const SizedBox(width: 8),
                   Text(

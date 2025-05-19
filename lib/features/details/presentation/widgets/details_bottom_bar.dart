@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/features/details/presentation/widgets/button_details.dart';
+import 'package:shopping_app/features/home/data/models/product_model.dart';
 
 class DetailsBottomBar extends StatelessWidget {
-  const DetailsBottomBar({super.key});
-
+  const DetailsBottomBar({super.key, required this.product});
+final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -11,16 +12,7 @@ class DetailsBottomBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 75, vertical: 10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
-                color: AppColors.secondryColor),
-            child: const Text(
-              '+ Add to cart',
-              style: TextStyle(fontSize: 18, color: AppColors.cardColor),
-            ),
-          ),
+          ButtonDetails(product: product,),
          Image.asset('assets/images/unheart.png',height: 42,width: 42,)
         ],
       ),

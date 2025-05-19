@@ -28,7 +28,7 @@ class ContainerProfileInfo extends StatelessWidget {
            const SizedBox(height: 25,),
            const LineContainer(),
           const SizedBox(height: 15,),
-           CustomCardProfile(title: 'Invinte a friend',child: Image.asset('assets/images/invinte friend.png'),),
+           CustomCardProfile(title: 'Invite a friend',child: Image.asset('assets/images/invinte friend.png'),),
            const SizedBox(height: 15,),
            CustomCardProfile(title: 'Help',child: Image.asset('assets/images/help.png'),),   
            const SizedBox(height: 40,),

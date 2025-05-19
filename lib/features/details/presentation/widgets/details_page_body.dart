@@ -7,7 +7,7 @@ import 'package:shopping_app/features/details/presentation/widgets/details_botto
 import 'package:shopping_app/features/details/presentation/widgets/image_container.dart';
 
 class DetailsPageBody extends StatelessWidget {
-  const DetailsPageBody({super.key});
+  const DetailsPageBody({super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +95,7 @@ class DetailsPageBody extends StatelessWidget {
               ),
             ),
           ),
-          bottomNavigationBar: const DetailsBottomBar(),
+         //bottomNavigationBar:  DetailsBottomBar(productItem: product,),
         );
         
       }

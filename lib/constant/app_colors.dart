@@ -9,5 +9,6 @@ class AppColors {
   static const Color backGroundColor = Color(0xFFF7F5F6);
   static const Color greyColor = Color.fromARGB(255, 223, 220, 220);
   static const Color pinkColor = Color.fromARGB(255, 248, 210, 223);
+  static const Color secondbackGroundColor = Color(0xFFBCE6E3);
 
 }
