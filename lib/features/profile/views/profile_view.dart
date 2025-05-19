@@ -9,7 +9,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: AppColors.secondbackGroundColor,
+      backgroundColor: AppColors.primaryColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 12),
@@ -18,8 +18,8 @@ class ProfileView extends StatelessWidget {
               SizedBox(height: 70,),
               ProfilePhoto(),
               SizedBox(height: 10,),
-              Text('Hana Hatem',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
-              Text('hanahatem@gmail.com',style: TextStyle(fontSize: 12,color: AppColors.primaryColor),),
+              Text('Hana Hatem',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,color: AppColors.cardColor),),
+              Text('hanahatem@gmail.com',style: TextStyle(fontSize: 12,color: AppColors.greyColor),),
               SizedBox(height: 60,),
               ContainerProfileInfo()
             ],

@@ -13,7 +13,7 @@ class ContainerProfileInfo extends StatelessWidget {
       decoration:const BoxDecoration(
           color: AppColors.cardColor,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(24), topRight: Radius.circular(24))),
+              topLeft: Radius.circular(30), topRight: Radius.circular(30))),
       child: Padding(
         padding: const EdgeInsets.only(left: 16,right: 16,top: 30),
         child: Column(
