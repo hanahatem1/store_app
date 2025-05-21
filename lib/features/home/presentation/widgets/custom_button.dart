@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/constant/app_colors.dart';
-import 'package:shopping_app/core/snak_bar_widget.dart';
 import 'package:shopping_app/features/cart/data/cart_cubit/cart_cubit.dart';
 import 'package:shopping_app/features/cart/data/cart_cubit/cart_state.dart';
 import 'package:shopping_app/features/home/data/models/product_model.dart';
@@ -13,8 +12,7 @@ final ProductModel product;
   Widget build(BuildContext context) {
     return  BlocListener<CartCubit, CartState>(
       listener: (context, state) {
-        if (state is CartUpdated && state.items.contains(product)) {
-          SnakBarWidget.show(context,title: 'Product added to cart');
+        if (state is CartSuccess && state.items.contains(product)) {
         }
       },
     child:GestureDetector(

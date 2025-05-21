@@ -5,10 +5,10 @@ abstract class CartState {}
 
 class CartInitial extends CartState {}
 
-class CartUpdated extends CartState {
+class CartSuccess extends CartState {
   final List<ProductModel> items;
 
-  CartUpdated(this.items);
+  CartSuccess(this.items);
 }
 
 class CartError extends CartState {

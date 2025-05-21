@@ -10,13 +10,13 @@ class CartCubit extends Cubit<CartState> {
 
   void addToCart(ProductModel product) {
     _cartItems.add(product);
-    emit(CartUpdated(_cartItems));
+    emit(CartSuccess(_cartItems));
      debugPrint('Product added: ${product.title}');
   }
 
   void removeFromCart(ProductModel product) {
     _cartItems.remove(product);
-    emit(CartUpdated(_cartItems));
+    emit(CartSuccess(_cartItems));
   }
 
   List<ProductModel> get cartItems => _cartItems;
