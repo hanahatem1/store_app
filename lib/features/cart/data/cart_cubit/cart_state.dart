@@ -10,6 +10,10 @@ class CartSuccess extends CartState {
 
   CartSuccess(this.items);
 }
+class CartProductAdded extends CartState {
+  final ProductModel product;
+  CartProductAdded(this.product);
+}
 
 class CartError extends CartState {
   final String message;
