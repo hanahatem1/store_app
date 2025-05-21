@@ -37,9 +37,12 @@ class _CustomListviewCartState extends State<CustomListviewCart> {
                   setState(() {
                    context.read<CartCubit>().removeFromCart(product);
                   });
+                   ScaffoldMessenger.of(context).showSnackBar(
+                   SnackBar(content: Text('${product.title} removed from cart')),
+                   );
                 },
-                product:items[index],)
-                ,
+                product:items[index],
+                ),
             );
           },
         );
