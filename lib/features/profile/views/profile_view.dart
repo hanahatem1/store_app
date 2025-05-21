@@ -15,12 +15,12 @@ class ProfileView extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 12),
           child: Column(
             children: [
-              SizedBox(height: 70,),
+              SizedBox(height: 50,),
               ProfilePhoto(),
               SizedBox(height: 10,),
               Text('Hana Hatem',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,color: AppColors.cardColor),),
               Text('hanahatem@gmail.com',style: TextStyle(fontSize: 12,color: AppColors.greyColor),),
-              SizedBox(height: 60,),
+              SizedBox(height: 40,),
               ContainerProfileInfo()
             ],
           ),
