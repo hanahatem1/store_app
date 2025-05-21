@@ -16,7 +16,19 @@ class ButtonDetails extends StatelessWidget {
       listener: (context, state) {
         if (state is CartUpdated && state.items.contains(product)) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('تمت إضافة المنتج إلى السلة')),
+              SnackBar(
+              behavior: SnackBarBehavior.floating,
+              margin:const EdgeInsets.only(bottom: 250.0, left: 100, right: 100),
+               dismissDirection: DismissDirection.none,
+                shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+              content:const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(child: Text('product added to cart')),
+                ],
+              )),
           );
         }
       },

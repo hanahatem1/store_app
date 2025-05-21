@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
-import 'package:shopping_app/features/details/data/models/product_details_model.dart';
+import 'package:shopping_app/features/home/data/models/product_model.dart';
 
 part 'details_state.dart';
 
@@ -17,7 +17,7 @@ Future<void> featchDetailsData(int id) async {
 
       if (response.statusCode == 200) {
         final  data = response.data;
-        final  product = ProductDetailsModel.fromJson(data);
+        final  product = ProductModel.fromJson(data);
 
         emit(DetailsSuccess(product));
       } else {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
-import 'package:shopping_app/features/details/data/models/product_details_model.dart';
+import 'package:shopping_app/features/home/data/models/product_model.dart';
 import 'package:shopping_app/features/home/presentation/widgets/custom_circle_container.dart';
 
 class ImageContainer extends StatelessWidget {
   const ImageContainer({super.key, required this.product});
-final ProductDetailsModel product;
+final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Stack(children: [

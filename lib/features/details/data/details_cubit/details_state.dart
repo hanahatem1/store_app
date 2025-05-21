@@ -19,7 +19,7 @@ final class DetailsFailure extends DetailsState {
 }
 
 final class DetailsSuccess extends DetailsState {
-  final ProductDetailsModel product;
+  final ProductModel product;
   const DetailsSuccess(this.product);
 
   @override

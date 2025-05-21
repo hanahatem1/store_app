@@ -95,7 +95,7 @@ class DetailsPageBody extends StatelessWidget {
               ),
             ),
           ),
-         //bottomNavigationBar:  DetailsBottomBar(productItem: product,),
+         bottomNavigationBar:  DetailsBottomBar(product: product,),
         );
         
       }
