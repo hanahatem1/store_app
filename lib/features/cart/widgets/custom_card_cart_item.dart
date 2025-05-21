@@ -56,7 +56,7 @@ void Function(DismissDirection)? onDismissed;
             const SizedBox(
               width: 30,
             ),
-            const CustomContainerCount()
+            const CustomContainerCount(countNum: '1',)
           ],
         ),
       ),
