@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/core/snak_bar_widget.dart';
 import 'package:shopping_app/features/cart/data/cart_cubit/cart_cubit.dart';
 import 'package:shopping_app/features/cart/data/cart_cubit/cart_state.dart';
 import 'package:shopping_app/features/home/data/models/product_model.dart';
@@ -15,21 +16,7 @@ class ButtonDetails extends StatelessWidget {
     return BlocListener<CartCubit, CartState>(
       listener: (context, state) {
         if (state is CartUpdated && state.items.contains(product)) {
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-              behavior: SnackBarBehavior.floating,
-              margin:const EdgeInsets.only(bottom: 250.0, left: 100, right: 100),
-               dismissDirection: DismissDirection.none,
-                shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
-    ),
-              content:const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Center(child: Text('product added to cart')),
-                ],
-              )),
-          );
+         SnakBarWidget.show(context,title: 'Product added to cart');
         }
       },
       child: GestureDetector(

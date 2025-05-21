@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopping_app/core/snak_bar_widget.dart';
 import 'package:shopping_app/features/cart/data/cart_cubit/cart_cubit.dart';
 import 'package:shopping_app/features/cart/data/cart_cubit/cart_state.dart';
 import 'package:shopping_app/features/cart/widgets/custom_card_cart_item.dart';
@@ -37,9 +38,7 @@ class _CustomListviewCartState extends State<CustomListviewCart> {
                   setState(() {
                    context.read<CartCubit>().removeFromCart(product);
                   });
-                   ScaffoldMessenger.of(context).showSnackBar(
-                   SnackBar(content: Text('${product.title} removed from cart')),
-                   );
+                  SnakBarWidget.show(context,title:('${product.title} removed from cart'));
                 },
                 product:items[index],
                 ),
