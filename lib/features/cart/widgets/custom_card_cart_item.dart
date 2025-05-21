@@ -3,14 +3,33 @@ import 'package:shopping_app/constant/app_colors.dart';
 import 'package:shopping_app/features/cart/widgets/custom_container_count.dart';
 import 'package:shopping_app/features/home/data/models/product_model.dart';
 
-class CustomCardCartItem extends StatelessWidget {
+class CustomCardCartItem extends StatefulWidget {
    CustomCardCartItem({super.key, required this.product,required this.onDismissed});
 final ProductModel product;
+
 void Function(DismissDirection)? onDismissed;
+
+  @override
+  State<CustomCardCartItem> createState() => _CustomCardCartItemState();
+}
+
+class _CustomCardCartItemState extends State<CustomCardCartItem> {
+ int count=1;
+ void onIncrement(){
+   setState(() {
+      count++;
+    });
+ }
+
+ void onDecrement(){
+   setState(() {
+      if (count > 1) count--;
+    });
+ }
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      key: Key(product.id.toString()),
+      key: Key(widget.product.id.toString()),
       direction: DismissDirection.endToStart,
       background: Container(
         color: AppColors.backGroundColor,
@@ -18,7 +37,7 @@ void Function(DismissDirection)? onDismissed;
         padding:const EdgeInsets.symmetric(horizontal: 16),
         child: const Icon(Icons.delete,color: AppColors.primaryColor,),
       ),
-      onDismissed: onDismissed,
+      onDismissed: widget.onDismissed,
       child: Card(
         color: AppColors.cardColor,
         elevation: 2,
@@ -27,7 +46,7 @@ void Function(DismissDirection)? onDismissed;
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Image.network(
-                product.image,
+                widget.product.image,
                 height: 120,
                 width: 120,
               ),
@@ -40,14 +59,14 @@ void Function(DismissDirection)? onDismissed;
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                  product.title,
+                  widget.product.title,
                     style:const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
-                    '\$${product.price}',
+                    '\$${(widget.product.price*count).toStringAsFixed(2)}',
                     style:const TextStyle(color: AppColors.secondryColor),
                   )
                 ],
@@ -56,7 +75,7 @@ void Function(DismissDirection)? onDismissed;
             const SizedBox(
               width: 30,
             ),
-            const CustomContainerCount(countNum: '1',)
+             CustomContainerCount(count: count, onIncrement:onIncrement,onDecrement: onDecrement,)
           ],
         ),
       ),

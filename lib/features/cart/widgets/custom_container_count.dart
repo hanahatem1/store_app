@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
 
-class CustomContainerCount extends StatefulWidget {
-  const CustomContainerCount({super.key, required this.countNum});
+class CustomContainerCount extends StatelessWidget {
+  final int count;
+  final VoidCallback onIncrement;
+  final VoidCallback onDecrement;
 
-final String countNum;
+  const CustomContainerCount({
+    super.key,
+    required this.count,
+    required this.onIncrement,
+    required this.onDecrement,
+  });
 
-  @override
-  State<CustomContainerCount> createState() => _CustomContainerCountState();
-}
-
-class _CustomContainerCountState extends State<CustomContainerCount> {
-
-late int count=1;
-  @override
-void initState(){
-  super.initState();
-  count=int.parse(widget.countNum);
-}
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,15 +24,7 @@ void initState(){
         child: Row(
           children: [
             GestureDetector(
-              onTap: (){
-                setState(() {
-                  if(count==1){
-                    count=1;
-                  }else{
-                  -- count ;
-                  }
-                });
-              },
+              onTap:onDecrement,
               child: const Icon(
                 Icons.remove,
                 size: 17,
@@ -47,11 +34,7 @@ void initState(){
             Text(count.toString()),
             const SizedBox(width: 3,),
             GestureDetector(
-              onTap: (){
-                setState(() {
-                   ++ count ;
-                });
-              },
+              onTap: onIncrement,
               child: const Icon(
                 Icons.add,
                 size: 17,
