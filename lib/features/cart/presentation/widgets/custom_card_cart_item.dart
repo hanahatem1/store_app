@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/constant/app_colors.dart';
 import 'package:shopping_app/features/cart/data/cart_cubit/cart_cubit.dart';
-import 'package:shopping_app/features/cart/widgets/custom_container_count.dart';
+import 'package:shopping_app/features/cart/presentation/widgets/custom_container_count.dart';
 import 'package:shopping_app/features/home/data/models/product_model.dart';
 
 class CustomCardCartItem extends StatelessWidget {

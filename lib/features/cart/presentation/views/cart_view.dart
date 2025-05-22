@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
-import 'package:shopping_app/features/cart/widgets/cart_bottom_bar.dart';
-import 'package:shopping_app/features/cart/widgets/custom_listview_cart.dart';
+import 'package:shopping_app/features/cart/presentation/widgets/cart_bottom_bar.dart';
+import 'package:shopping_app/features/cart/presentation/widgets/custom_listview_cart.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});

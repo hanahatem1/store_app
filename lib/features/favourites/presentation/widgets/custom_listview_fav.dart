@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/features/favourites/widgets/custom_card_fav_item.dart';
+import 'package:shopping_app/features/favourites/presentation/widgets/custom_card_fav_item.dart';
 
 class CustomListviewFav extends StatelessWidget {
   const CustomListviewFav({super.key});

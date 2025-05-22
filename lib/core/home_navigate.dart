@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/constant/app_colors.dart';
-import 'package:shopping_app/features/cart/views/cart_view.dart';
-import 'package:shopping_app/features/favourites/views/favourites_view.dart';
+import 'package:shopping_app/features/cart/presentation/views/cart_view.dart';
+import 'package:shopping_app/features/favourites/presentation/views/favourites_view.dart';
 import 'package:shopping_app/features/home/presentation/views/home_page.dart';
 import 'package:shopping_app/features/home/presentation/widgets/custom_bottom_navigation_bar.dart';
 import 'package:shopping_app/features/profile/views/profile_view.dart';
