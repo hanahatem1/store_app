@@ -24,7 +24,7 @@ class CustomContainerCount extends StatelessWidget {
         child: Row(
           children: [
             GestureDetector(
-              onTap:onDecrement,
+              onTap: count > 1 ? onDecrement :null,
               child: const Icon(
                 Icons.remove,
                 size: 17,

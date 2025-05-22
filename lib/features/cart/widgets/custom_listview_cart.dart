@@ -12,20 +12,22 @@ class CustomListviewCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
-        if (state is CartInitial || state is CartSuccess) {
-          final items = state is CartSuccess 
-              ? state.items 
-              : context.read<CartCubit>().cartItems;
+        final cartCubit=context.read<CartCubit>();
+        final cartItems= state is CartSuccess
+          ? state.items
+          : cartCubit.cartItems;
               
-          if (items.isEmpty) {
+          if (cartItems.isEmpty) {
             return const Center(
               child: Text('Your cart is empty'),
             );
           }
+          final products=cartItems.keys.toList();
         return ListView.builder(
-          itemCount: items.length,
+          itemCount: products.length,
           itemBuilder: (context, index) {
-            final product = items[index];
+            final product = products[index];
+            final quntity = cartItems[product]!;
             return  Padding(
               padding:const  EdgeInsets.only(bottom: 5),
               child: CustomCardCartItem(
@@ -33,16 +35,13 @@ class CustomListviewCart extends StatelessWidget {
                   context.read<CartCubit>().removeFromCart(product);
                   SnakBarWidget.show(context,title:('${product.title} removed from cart'));
                 },
-                product:items[index],
+                product:product,
+                quantity: quntity,
                 ),
             );
           },
         );
-      } else if (state is CartError) {
-          return Center(child: Text(state.message));
-        }
-        return const Center(child: CircularProgressIndicator());
-      }
+      } 
     );
   }
 }

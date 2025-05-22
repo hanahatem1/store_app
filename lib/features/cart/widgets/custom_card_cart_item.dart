@@ -1,35 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/features/cart/data/cart_cubit/cart_cubit.dart';
 import 'package:shopping_app/features/cart/widgets/custom_container_count.dart';
 import 'package:shopping_app/features/home/data/models/product_model.dart';
 
-class CustomCardCartItem extends StatefulWidget {
-   CustomCardCartItem({super.key, required this.product,required this.onDismissed});
+class CustomCardCartItem extends StatelessWidget {
+   CustomCardCartItem({
+    super.key,
+    required this.product,
+    required this.onDismissed,
+    required this.quantity
+    });
+  
 final ProductModel product;
-
 void Function(DismissDirection)? onDismissed;
-
-  @override
-  State<CustomCardCartItem> createState() => _CustomCardCartItemState();
-}
-
-class _CustomCardCartItemState extends State<CustomCardCartItem> {
- int count=1;
- void onIncrement(){
-   setState(() {
-      count++;
-    });
- }
-
- void onDecrement(){
-   setState(() {
-      if (count > 1) count--;
-    });
- }
+final int quantity;
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      key: Key(widget.product.id.toString()),
+      key: Key(product.id.toString()),
       direction: DismissDirection.endToStart,
       background: Container(
         color: AppColors.backGroundColor,
@@ -37,7 +27,7 @@ class _CustomCardCartItemState extends State<CustomCardCartItem> {
         padding:const EdgeInsets.symmetric(horizontal: 16),
         child: const Icon(Icons.delete,color: AppColors.primaryColor,),
       ),
-      onDismissed: widget.onDismissed,
+      onDismissed: onDismissed,
       child: Card(
         color: AppColors.cardColor,
         elevation: 2,
@@ -46,7 +36,7 @@ class _CustomCardCartItemState extends State<CustomCardCartItem> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Image.network(
-                widget.product.image,
+                product.image,
                 height: 120,
                 width: 120,
               ),
@@ -59,14 +49,14 @@ class _CustomCardCartItemState extends State<CustomCardCartItem> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                  widget.product.title,
+                  product.title,
                     style:const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
-                    '\$${(widget.product.price*count).toStringAsFixed(2)}',
+                    '\$${(product.price*quantity).toStringAsFixed(2)}',
                     style:const TextStyle(color: AppColors.secondryColor),
                   )
                 ],
@@ -75,7 +65,15 @@ class _CustomCardCartItemState extends State<CustomCardCartItem> {
             const SizedBox(
               width: 30,
             ),
-             CustomContainerCount(count: count, onIncrement:onIncrement,onDecrement: onDecrement,)
+             CustomContainerCount(
+              count: quantity,
+               onIncrement:(){
+                context.read<CartCubit>().updateQuantity(product, quantity+1);
+               },
+               onDecrement: (){
+                context.read<CartCubit>().updateQuantity(product, quantity-1);
+               },
+               )
           ],
         ),
       ),

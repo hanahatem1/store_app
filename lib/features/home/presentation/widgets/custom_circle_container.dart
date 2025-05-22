@@ -16,6 +16,7 @@ final Widget child;
           color: color,
           boxShadow: [
             BoxShadow(
+                // ignore: deprecated_member_use
                 color: AppColors.textColor.withOpacity(.1),
                 spreadRadius: 2,
                 blurRadius: 6,

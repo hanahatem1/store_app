@@ -6,7 +6,7 @@ abstract class CartState {}
 class CartInitial extends CartState {}
 
 class CartSuccess extends CartState {
-  final List<ProductModel> items;
+  final Map<ProductModel,int> items;
 
   CartSuccess(this.items);
 }
