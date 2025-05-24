@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/features/cart/data/cart_cubit/cart_cubit.dart';
+import 'package:shopping_app/features/favourites/data/cubit/favourites_cubit.dart';
 import 'package:shopping_app/features/home/data/home_cubit/home_cubit.dart';
 import 'package:shopping_app/core/home_navigate.dart';
 import 'package:shopping_app/features/splash/views/splash_page.dart';
@@ -17,10 +18,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => HomeCubit()..featchHomeData(),
+          create: (context) => HomeCubit()..fetchHomeData(),
         ),
         BlocProvider(
           create: (context) => CartCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FavouritesCubit(),
         ),
       ],
       child: const MaterialApp(
