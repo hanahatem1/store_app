@@ -3,7 +3,7 @@ import 'package:shopping_app/constant/app_colors.dart';
 import 'package:shopping_app/features/auth/sign_in/presentation/widgets/custom_button.dart';
 import 'package:shopping_app/features/auth/sign_in/presentation/widgets/custom_text_field.dart';
 import 'package:shopping_app/features/auth/sign_up/presentation/views/sign_up.dart';
-import 'package:shopping_app/core/home_navigate.dart';
+import 'package:shopping_app/core/widgets/home_navigate.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

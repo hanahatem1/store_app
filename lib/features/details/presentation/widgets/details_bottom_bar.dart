@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopping_app/core/snak_bar_widget.dart';
+import 'package:shopping_app/core/widgets/snak_bar_widget.dart';
 import 'package:shopping_app/features/details/presentation/widgets/button_details.dart';
 import 'package:shopping_app/features/favourites/data/cubit/favourites_cubit.dart';
 import 'package:shopping_app/features/home/data/models/product_model.dart';
