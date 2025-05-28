@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
       body: BlocBuilder<HomeCubit,HomeState>(
         builder:(context,state){
           if(state is HomeLoading){
-            return const CircularProgressIndicator();
+            return const Center(child:  CircularProgressIndicator());
           } else if(state is HomeSuccess){
             return BlocProvider(
               create:(_) => SearchCubit(state.products),
@@ -76,7 +76,12 @@ final List<ProductModel> products;
                    else if (state is SearchLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is SearchSuccess) {
-                    return CustomGridview(products: state.product);
+                    if(state.product.isEmpty){
+                      return const Center(child: 
+                       Text('There are no products match this'));
+                    }else {
+                      return CustomGridview(products: state.product);
+                    }
                   } else if (state is SearchError) {
                     return Center(child: Text(state.errMessage));
                   } else {
