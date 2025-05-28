@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FavouritesCubit(),
         ),
+        
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

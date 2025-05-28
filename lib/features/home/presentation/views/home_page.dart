@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/constant/app_colors.dart';
 import 'package:shopping_app/features/home/data/home_cubit/home_cubit.dart';
+import 'package:shopping_app/features/home/data/models/product_model.dart';
+import 'package:shopping_app/features/home/data/search_cubit/search_cubit.dart';
 import 'package:shopping_app/features/home/presentation/widgets/custom_app_bar.dart';
 import 'package:shopping_app/features/home/presentation/widgets/custom_circle_container.dart';
 import 'package:shopping_app/features/home/presentation/widgets/custom_gridview.dart';
@@ -13,9 +15,34 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.backGroundColor,
-      body: SingleChildScrollView(
+      body: BlocBuilder<HomeCubit,HomeState>(
+        builder:(context,state){
+          if(state is HomeLoading){
+            return const CircularProgressIndicator();
+          } else if(state is HomeSuccess){
+            return BlocProvider(
+              create:(_) => SearchCubit(state.products),
+              child: HomeContent(products: state.products),
+              );
+          } else if(state is HomeFailure){
+            return Text(state.errMessage);
+          }else{
+            return const SizedBox.shrink();
+          }
+        }
+      )
+    );
+  }
+}
+
+class HomeContent extends StatelessWidget{
+  const HomeContent ({super.key, required this.products});
+final List<ProductModel> products;
+  @override
+ Widget build(BuildContext context){
+  return SingleChildScrollView(
         child: Padding(
           padding:const EdgeInsets.symmetric(horizontal: 14, vertical: 30),
           child: Column(
@@ -41,13 +68,16 @@ class HomePage extends StatelessWidget {
                 height: 25,
               ),
              const ListViewCategories(),
-              BlocBuilder<HomeCubit, HomeState>(
+              BlocBuilder<SearchCubit, SearchState>(
                 builder: (context, state) {
-                   if (state is HomeLoading) {
+                  if(state is SearchInitial){
+                    return CustomGridview(products: products);
+                  }
+                   else if (state is SearchLoading) {
                     return const Center(child: CircularProgressIndicator());
-                  } else if (state is HomeSuccess) {
-                    return CustomGridview(products: state.products);
-                  } else if (state is HomeFailure) {
+                  } else if (state is SearchSuccess) {
+                    return CustomGridview(products: state.product);
+                  } else if (state is SearchError) {
                     return Center(child: Text(state.errMessage));
                   } else {
                     return const SizedBox.shrink();
@@ -57,7 +87,6 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
+      );
+ }
 }
