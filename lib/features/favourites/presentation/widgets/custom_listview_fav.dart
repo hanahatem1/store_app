@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopping_app/core/widgets/loading_indicator.dart';
 import 'package:shopping_app/features/favourites/data/cubit/favourites_cubit.dart';
 import 'package:shopping_app/features/favourites/presentation/widgets/custom_card_fav_item.dart';
 
@@ -20,7 +21,7 @@ class _CustomListviewFavState extends State<CustomListviewFav> {
     return BlocBuilder<FavouritesCubit, FavouritesState>(
       builder: (context, state) {
         if(state is FavouritesLoading){
-        return const Center(child:CircularProgressIndicator());
+        return const Center(child:LoadingIndicator());
         }
         else if(state is FavouritesSuccess){
           final favList = state.product;

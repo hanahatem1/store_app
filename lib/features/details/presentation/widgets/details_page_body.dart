@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/core/widgets/loading_indicator.dart';
 import 'package:shopping_app/features/details/data/details_cubit/details_cubit.dart';
 import 'package:shopping_app/features/details/presentation/widgets/colors_row.dart';
 import 'package:shopping_app/features/details/presentation/widgets/details_bottom_bar.dart';
@@ -15,7 +16,7 @@ class DetailsPageBody extends StatelessWidget {
       builder: (context, state) {
          if (state is DetailsLoading) {
           return const Scaffold(
-            body: Center(child: CircularProgressIndicator()),
+            body: Center(child: LoadingIndicator()),
           );
         } else if (state is DetailsFailure) {
           return Scaffold(
