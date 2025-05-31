@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/core/widgets/page_shimmer.dart';
 import 'package:shopping_app/core/widgets/loading_indicator.dart';
 import 'package:shopping_app/features/home/data/home_cubit/home_cubit.dart';
 import 'package:shopping_app/features/home/data/models/product_model.dart';
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
       body: BlocBuilder<HomeCubit,HomeState>(
         builder:(context,state){
           if(state is HomeLoading){
-            return const Center(child:  LoadingIndicator());
+            return const PageShimmer();
           } else if(state is HomeSuccess){
             return BlocProvider(
               create:(_) => SearchCubit(state.products),
@@ -75,7 +76,7 @@ final List<ProductModel> products;
                     return CustomGridview(products: products);
                   }
                    else if (state is SearchLoading) {
-                    return const Center(child: LoadingIndicator());
+                    return const PageShimmer();
                   } else if (state is SearchSuccess) {
                     if(state.product.isEmpty){
                       return const Center(child: 
