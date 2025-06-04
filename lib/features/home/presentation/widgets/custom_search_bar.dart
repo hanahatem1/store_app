@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/core/constant/app_colors.dart';
 import 'package:shopping_app/features/home/data/search_cubit/search_cubit.dart';
 
 class CustomSearchBar extends StatelessWidget {

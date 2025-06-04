@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/core/constant/app_colors.dart';
 import 'package:shopping_app/features/cart/presentation/views/cart_view.dart';
 import 'package:shopping_app/features/favourites/presentation/views/favourites_view.dart';
 import 'package:shopping_app/features/home/presentation/views/home_page.dart';

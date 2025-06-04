@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/constant/app_colors.dart';
+import 'package:shopping_app/core/constant/app_colors.dart';
 import 'package:shopping_app/features/auth/sign_in/presentation/views/login_page.dart';
 import 'package:shopping_app/features/auth/sign_in/presentation/widgets/custom_button.dart';
 import 'package:shopping_app/features/auth/sign_in/presentation/widgets/custom_text_field.dart';
