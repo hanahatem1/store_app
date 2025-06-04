@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/core/constant/app_colors.dart';
 import 'package:shopping_app/core/widgets/loading_indicator.dart';
 import 'package:shopping_app/features/details/data/details_cubit/details_cubit.dart';
-import 'package:shopping_app/features/details/presentation/widgets/colors_row.dart';
 import 'package:shopping_app/features/details/presentation/widgets/details_bottom_bar.dart';
 import 'package:shopping_app/features/details/presentation/widgets/image_container.dart';
 
@@ -80,7 +79,6 @@ class DetailsPageBody extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  const ColorsRow(),
                   const SizedBox(
                     height: 6,
                   ),
