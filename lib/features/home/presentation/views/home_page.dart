@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/core/constant/app_colors.dart';
 import 'package:shopping_app/core/widgets/page_shimmer.dart';
-import 'package:shopping_app/core/widgets/loading_indicator.dart';
 import 'package:shopping_app/features/home/data/home_cubit/home_cubit.dart';
 import 'package:shopping_app/features/home/data/models/product_model.dart';
 import 'package:shopping_app/features/home/data/search_cubit/search_cubit.dart';
@@ -39,10 +38,35 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class HomeContent extends StatelessWidget{
+class HomeContent extends StatefulWidget{
   const HomeContent ({super.key, required this.products});
 final List<ProductModel> products;
+
   @override
+  State<HomeContent> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<HomeContent> {
+
+  late List <ProductModel> filterdProducts;
+  @override
+void initState(){
+  super.initState();
+  filterdProducts=widget.products;
+}
+void filterByCategory(String category){
+if(category=='All'){
+  setState(() {
+    filterdProducts=widget.products;
+  });
+}else{
+  setState(() {
+    filterdProducts=widget.products.
+    where((product) => product.category==category).toList();
+  });
+}
+}
+@override
  Widget build(BuildContext context){
   return SingleChildScrollView(
         child: Padding(
@@ -69,11 +93,11 @@ final List<ProductModel> products;
               const SizedBox(
                 height: 25,
               ),
-             const ListViewCategories(),
+              ListViewCategories(onCategorySelected:filterByCategory),
               BlocBuilder<SearchCubit, SearchState>(
                 builder: (context, state) {
                   if(state is SearchInitial){
-                    return CustomGridview(products: products);
+                    return CustomGridview(products: filterdProducts);
                   }
                    else if (state is SearchLoading) {
                     return const PageShimmer();

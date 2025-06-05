@@ -5,14 +5,16 @@ class ProductModel {
   final double price;
   final double rate; 
   final String description;
+  final String category;
 
-  ProductModel( {
+  ProductModel({
     required this.id,
     required this.title,
     required this.image,
     required this.price,
     required this.rate,
-    required this.description
+    required this.description,
+    required this.category
     
   });
 
@@ -23,7 +25,8 @@ class ProductModel {
       image: json['image'],
       price: (json['price'] as num).toDouble(),
       rate: (json['rating']['rate'] as num).toDouble(), 
-      description: (json['description'])
+      description: (json['description']),
+      category: json['category']
     );
   }
 }

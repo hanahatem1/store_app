@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shopping_app/features/home/presentation/widgets/custom_card_categories.dart';
 
 class ListViewCategories extends StatefulWidget {
-  const ListViewCategories({super.key});
+  final Function(String category) onCategorySelected;
+  const ListViewCategories({super.key, required this.onCategorySelected});
 
   @override
   State<ListViewCategories> createState() => _ListViewCategoriesState();
@@ -11,10 +12,10 @@ class ListViewCategories extends StatefulWidget {
 class _ListViewCategoriesState extends State<ListViewCategories> {
    final List<String> categories = [
       'All',
-      'Electronic',
-      "Men's clothes",
-      "Women's clothes",
-      'Jewelry',
+      'electronics',
+      "men's clothing",
+      "women's clothing",
+      'jewelery',
     ];
      int selectedIndex=0;
     @override
@@ -35,6 +36,7 @@ class _ListViewCategoriesState extends State<ListViewCategories> {
                 setState(() {
                   selectedIndex=index;
                 });
+                widget.onCategorySelected(categories[index]);
               },
               ),
           );
