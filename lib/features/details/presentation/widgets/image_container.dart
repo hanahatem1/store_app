@@ -12,11 +12,14 @@ final ProductModel product;
       ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: Center(
-          child: Image.network(
-            product.image,
-            width:360,
-            height:360,
-            fit: BoxFit.cover,
+          child: Hero(
+            tag: product.id,
+            child: Image.network(
+              product.image,
+              width:360,
+              height:360,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ),

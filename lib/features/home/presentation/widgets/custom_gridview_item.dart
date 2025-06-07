@@ -32,10 +32,13 @@ class CustomGridviewItem extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Image.network(
-                    product.image,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: product.id,
+                    child: Image.network(
+                      product.image,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
