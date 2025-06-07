@@ -18,66 +18,11 @@ class PageShimmer extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 40,
-                    width: 320,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        color: AppColors.greyColor,
-                        ),
-                  ),
-                  Container(
-                    decoration:const BoxDecoration(
-                        shape: BoxShape.circle, color: AppColors.greyColor,
-                        ),
-                    height: 35,
-                    width: 35,
-                  )
-                ],
-              ),
+              const SearchBarShimmer(),
               const SizedBox(
                 height: 25,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: AppColors.greyColor,
-                    ),
-                    height: 35,
-                    width: 60,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: AppColors.greyColor,
-                    ),
-                    height: 35,
-                    width: 90,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: AppColors.greyColor,
-                    ),
-                    height: 35,
-                    width: 100,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: AppColors.greyColor,
-                    ),
-                    height: 35,
-                    width: 100,
-                  )
-                ],
-              ),
+              const ListviewShimmer(),
               Expanded(
                 child: GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -101,6 +46,83 @@ class PageShimmer extends StatelessWidget {
             ],
           ),
         ));
+  }
+}
+
+class ListviewShimmer extends StatelessWidget {
+  const ListviewShimmer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: AppColors.greyColor,
+          ),
+          height: 35,
+          width: 60,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: AppColors.greyColor,
+          ),
+          height: 35,
+          width: 90,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: AppColors.greyColor,
+          ),
+          height: 35,
+          width: 100,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: AppColors.greyColor,
+          ),
+          height: 35,
+          width: 100,
+        )
+      ],
+    );
+  }
+}
+
+class SearchBarShimmer extends StatelessWidget {
+  const SearchBarShimmer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          height: 40,
+          width: 320,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              color: AppColors.greyColor,
+              ),
+        ),
+        Container(
+          decoration:const BoxDecoration(
+              shape: BoxShape.circle, color: AppColors.greyColor,
+              ),
+          height: 35,
+          width: 35,
+        )
+      ],
+    );
   }
 }
 
