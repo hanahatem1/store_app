@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/core/constant/app_colors.dart';
+import 'package:shopping_app/core/widgets/home_navigate.dart';
 import 'package:shopping_app/features/cart/data/cart_cubit/cart_cubit.dart';
 import 'package:shopping_app/features/cart/presentation/widgets/custom_button_cart.dart';
 
@@ -38,7 +39,11 @@ class CartBottomBar extends StatelessWidget {
                  const SizedBox(height: 10,),
                  const CustomButtonCart(text: 'Checkout with InstaPay',color1: AppColors.textColor,color2: AppColors.cardColor,colorText: AppColors.textColor,),
                  const SizedBox(height: 10,),
-                 const CustomButtonCart(text: 'Continue shopping',color1: AppColors.cardColor,color2: AppColors.cardColor,colorText: AppColors.textColor,),
+                 GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const HomeNavigate()));
+                  },
+                  child: const CustomButtonCart(text: 'Continue shopping',color1: AppColors.cardColor,color2: AppColors.cardColor,colorText: AppColors.textColor,)),
                 const SizedBox(height: 10,)
             ],
           ),

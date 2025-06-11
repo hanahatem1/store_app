@@ -4,7 +4,6 @@ import 'package:shopping_app/features/cart/data/cart_cubit/cart_cubit.dart';
 import 'package:shopping_app/features/favourites/data/cubit/favourites_cubit.dart';
 import 'package:shopping_app/features/home/data/home_cubit/home_cubit.dart';
 import 'package:shopping_app/core/widgets/home_navigate.dart';
-import 'package:shopping_app/features/splash/views/splash_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:SplashPage(),
+        home:HomeNavigate(),
       ),
     );
   }
