@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/constant/app_colors.dart';
+import 'package:shopping_app/core/widgets/snak_bar_widget.dart';
 import 'package:shopping_app/features/auth/sign_in/presentation/widgets/custom_button.dart';
 import 'package:shopping_app/features/auth/sign_in/presentation/widgets/custom_text_field.dart';
 import 'package:shopping_app/features/auth/sign_up/presentation/views/sign_up.dart';
@@ -29,8 +31,13 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Login',style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold),),
-                const SizedBox(height: 30,),
+                const Text(
+                  'Login',
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
                 customTextField(
                   onChanged: (data) {
                     email = data;
@@ -49,17 +56,31 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 30),
                 customButton(
-                  onTap: () {
+                  onTap: () async {
                     if (formKey.currentState!.validate()) {
-                      // TODO: Add your login logic here
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Login tapped')),
-                      );
+                      try {
+                        var auth = FirebaseAuth.instance;
+                        UserCredential user =
+                            await auth.signInWithEmailAndPassword(
+                          email: email!,
+                          password: pass!,
+                        );
 
-                      // Navigate to home
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => HomeNavigate()),
-                      );
+                       SnakBarWidget.show(context,title: 'Login done successfully');
+
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (context) =>const HomeNavigate()),
+                        );
+                      } on FirebaseAuthException catch (ex) {
+                        if (ex.code == 'user-not-found') {
+                         SnakBarWidget.show(context,title: 'The account not found');
+                        } else if (ex.code == 'wrong-password') {
+                          SnakBarWidget.show(context,title: 'password is wrong');
+                        } else {
+                          SnakBarWidget.show(context, title: 'there is an error: ${ex.message}');
+                        }
+                      }
                     }
                   },
                   text: 'Login',
@@ -72,7 +93,8 @@ class _LoginPageState extends State<LoginPage> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) =>const RegisterPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const RegisterPage()),
                         );
                       },
                       child: const Text(

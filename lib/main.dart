@@ -1,11 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/features/cart/data/cart_cubit/cart_cubit.dart';
 import 'package:shopping_app/features/favourites/data/cubit/favourites_cubit.dart';
 import 'package:shopping_app/features/home/data/home_cubit/home_cubit.dart';
-import 'package:shopping_app/core/widgets/home_navigate.dart';
+import 'package:shopping_app/features/splash/views/splash_page.dart';
+import 'package:shopping_app/firebase_options.dart';
 
-void main() {
+void main() async {
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -29,7 +35,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:HomeNavigate(),
+        home:SplashPage(),
       ),
     );
   }

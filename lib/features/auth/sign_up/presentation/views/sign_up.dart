@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart'
+    show FirebaseAuth, FirebaseAuthException, UserCredential;
 import 'package:flutter/material.dart';
 import 'package:shopping_app/core/constant/app_colors.dart';
+import 'package:shopping_app/core/widgets/snak_bar_widget.dart';
 import 'package:shopping_app/features/auth/sign_in/presentation/views/login_page.dart';
 import 'package:shopping_app/features/auth/sign_in/presentation/widgets/custom_button.dart';
 import 'package:shopping_app/features/auth/sign_in/presentation/widgets/custom_text_field.dart';
@@ -28,12 +31,17 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Register',style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold),),
-                const SizedBox(height: 30,),
+                const Text(
+                  'Register',
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
                 customTextField(
                   hintText: 'Enter your username:',
                   labelText: 'User name',
-                  ),
+                ),
                 const SizedBox(height: 30),
                 customTextField(
                   onChanged: (data) => email = data,
@@ -48,13 +56,32 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 const SizedBox(height: 30),
                 customButton(
-                  onTap: () {
+                  onTap: () async {
                     if (formKey.currentState!.validate()) {
-                      // TODO: Add your registration logic here
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Register tapped')),
-                      );
-                      // You could also navigate directly if you want
+                      try {
+                        var auth = FirebaseAuth.instance;
+                        UserCredential user =
+                            await auth.createUserWithEmailAndPassword(
+                          email: email!,
+                          password: pass!,
+                        );
+
+                        
+                       SnakBarWidget.show(context,title: 'Account created successuflly');
+
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()),
+                        );
+                      } on FirebaseAuthException catch (ex) {
+                        if (ex.code == 'weak-password') {
+                         SnakBarWidget.show(context,title: 'weak password');
+                        } else if (ex.code == 'email-already-in-use') {
+                         SnakBarWidget.show(context,title: 'email already in use');
+                        } else {
+                          SnakBarWidget.show(context, title: 'there is an error: ${ex.message}');
+                        }
+                      }
                     }
                   },
                   text: 'Create Account',
@@ -67,7 +94,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()),
                         );
                       },
                       child: const Text(
