@@ -18,6 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> formKey = GlobalKey();
   String? email;
   String? pass;
+  String? username;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 30,
                 ),
                 customTextField(
+                  onChanged: (data)=> username=data,
                   hintText: 'Enter your username:',
                   labelText: 'User name',
                 ),
@@ -66,6 +68,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           password: pass!,
                         );
 
+                        await user.user!.updateDisplayName(username);
+                        await user.user!.reload();
                         
                        SnakBarWidget.show(context,title: 'Account created successuflly');
 
