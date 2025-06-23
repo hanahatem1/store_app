@@ -24,92 +24,95 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backGroundColor,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Form(
-            key: formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Register',
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                customTextField(
-                  onChanged: (data)=> username=data,
-                  hintText: 'Enter your username:',
-                  labelText: 'User name',
-                ),
-                const SizedBox(height: 30),
-                customTextField(
-                  onChanged: (data) => email = data,
-                  hintText: 'Enter Your Email:',
-                  labelText: 'Email',
-                ),
-                const SizedBox(height: 30),
-                customTextField(
-                  onChanged: (data) => pass = data,
-                  hintText: 'Enter Your Password:',
-                  labelText: 'Password',
-                ),
-                const SizedBox(height: 30),
-                customButton(
-                  onTap: () async {
-                    if (formKey.currentState!.validate()) {
-                      try {
-                        var auth = FirebaseAuth.instance;
-                        UserCredential user =
-                            await auth.createUserWithEmailAndPassword(
-                          email: email!,
-                          password: pass!,
-                        );
-
-                        await user.user!.updateDisplayName(username);
-                        await user.user!.reload();
-                        
-                       SnakBarWidget.show(context,title: 'Account created successuflly');
-
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (context) => const LoginPage()),
-                        );
-                      } on FirebaseAuthException catch (ex) {
-                        if (ex.code == 'weak-password') {
-                         SnakBarWidget.show(context,title: 'weak password');
-                        } else if (ex.code == 'email-already-in-use') {
-                         SnakBarWidget.show(context,title: 'email already in use');
-                        } else {
-                          SnakBarWidget.show(context, title: 'there is an error: ${ex.message}');
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 100,horizontal: 15),
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Register',
+                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  customTextField(
+                    onChanged: (data)=> username=data,
+                    hintText: 'Enter your username:',
+                    labelText: 'User name',
+                  ),
+                  const SizedBox(height: 30),
+                  customTextField(
+                    onChanged: (data) => email = data,
+                    hintText: 'Enter Your Email:',
+                    labelText: 'Email',
+                  ),
+                  const SizedBox(height: 30),
+                  customTextField(
+                    obscureText: true,
+                    onChanged: (data) => pass = data,
+                    hintText: 'Enter Your Password:',
+                    labelText: 'Password',
+                  ),
+                  const SizedBox(height: 30),
+                  customButton(
+                    onTap: () async {
+                      if (formKey.currentState!.validate()) {
+                        try {
+                          var auth = FirebaseAuth.instance;
+                          UserCredential user =
+                              await auth.createUserWithEmailAndPassword(
+                            email: email!,
+                            password: pass!,
+                          );
+        
+                          await user.user!.updateDisplayName(username);
+                          await user.user!.reload();
+                          
+                         SnakBarWidget.show(context,title: 'Account created successuflly');
+        
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()),
+                          );
+                        } on FirebaseAuthException catch (ex) {
+                          if (ex.code == 'weak-password') {
+                           SnakBarWidget.show(context,title: 'weak password');
+                          } else if (ex.code == 'email-already-in-use') {
+                           SnakBarWidget.show(context,title: 'email already in use');
+                          } else {
+                            SnakBarWidget.show(context, title: 'there is an error: ${ex.message}');
+                          }
                         }
                       }
-                    }
-                  },
-                  text: 'Create Account',
-                ),
-                const SizedBox(height: 50),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Already have an account?'),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const LoginPage()),
-                        );
-                      },
-                      child: const Text(
-                        '  Sign In',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                    },
+                    text: 'Create Account',
+                  ),
+                  const SizedBox(height: 50),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Already have an account?'),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()),
+                          );
+                        },
+                        child: const Text(
+                          '  Sign In',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
