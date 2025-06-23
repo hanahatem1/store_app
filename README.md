@@ -22,7 +22,7 @@ Built using Firebase and REST API.
 |---------|---------|--------|
 | ![Details](screenshots/details.png) | ![Profile](screenshots/profile.png) | ![Search](screenshots/search.png) |
 
-## 🛠️ Getting Started
+##  Getting Started
 
 1. Clone the repository:
    ```bash
