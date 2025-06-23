@@ -7,8 +7,10 @@ Built using Firebase and REST API.
 
 -  Login using Firebase Authentication  
 -  Logout functionality  
--  Upload profile photo via Firebase Storage  
--  Fetch product data from external REST API  
+-  Upload and change profile photo   
+-  Fetch product data from external REST API
+-  View product details (title, price, description, image, rating)
+-  Filter products by category  
 -  Search for products  
 -  Add to cart  
 -  Add to favorites
