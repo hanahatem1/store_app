@@ -14,6 +14,14 @@ Built using Firebase and REST API.
 -  Search for products  
 -  Add to cart  
 -  Add to favorites
+  
+##  How It Works
+
+- User logs in using Firebase Authentication.
+- App fetches product data from a REST API.
+- User can search, filter by category, and view product details.
+- User can add items to cart and favorites.
+- Profile photo is uploaded and changed
 
 
 ##  Screenshots
