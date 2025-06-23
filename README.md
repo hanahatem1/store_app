@@ -1,16 +1,29 @@
-# shopping_app
+# 🛍️ Store App
 
-A new Flutter project.
+A Flutter shopping app for electronics, jewelry, and clothing (men & women).  
+Built using Firebase and REST API.
 
-## Getting Started
+##  Features
 
-This project is a starting point for a Flutter application.
+-  Login with Firebase Authentication  
+-  Update profile photo via Firebase Storage  
+-  Search products  
+-  Add to cart  
+-  Add to favorites  
+-  Firestore integration
 
-A few resources to get you started if this is your first Flutter project:
+##  Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+| Home | Favorites | Cart |
+|------|-----------|------|
+| ![Home](screenshots/home.png) | ![Favorites](screenshots/favouites.png) | ![Cart](screenshots/cart.png) |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Details | Profile | Search |
+|---------|---------|--------|
+| ![Details](screenshots/details.png) | ![Profile](screenshots/profile.png) | ![Search](screenshots/search.png) |
+
+## 🛠️ Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/hanahatem1/store_app
