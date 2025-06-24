@@ -18,11 +18,15 @@ Built using Firebase and REST API.
 ##  How It Works
 
 - User logs in using Firebase Authentication.
-- App fetches product data from [Fake Store API](https://fakestoreapi.com/).
+- App fetches product data from API
 - User can search, filter by category, and view product details.
 - User can add items to cart and favorites.
 - Profile photo is uploaded and changed
+- 
+##  API Source
 
+Product data is fetched from the public endpoint:  
+[`https://fakestoreapi.com/products`](https://fakestoreapi.com/products)
 
 ##  Screenshots
 
