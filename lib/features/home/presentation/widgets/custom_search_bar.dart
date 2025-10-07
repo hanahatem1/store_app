@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopping_app/core/constant/app_colors.dart';
-import 'package:shopping_app/features/home/data/search_cubit/search_cubit.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key});
-
+  const CustomSearchBar({super.key, required this.onChanged});
+ final Function(String) onChanged;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 40,
       width: 320,
       child: TextField(
-        onChanged: (value){
-          if(value.isEmpty){
-            context.read<SearchCubit>().clearSearch();
-          }else{
-            context.read<SearchCubit>().searchProducts(value);
-          }
-        },
+        onChanged: onChanged,
         cursorColor: AppColors.greyColor,
         decoration: InputDecoration(
             hintText: 'Search product',

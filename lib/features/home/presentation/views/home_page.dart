@@ -17,107 +17,115 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backGroundColor,
-      body: BlocBuilder<HomeCubit,HomeState>(
-        builder:(context,state){
-          if(state is HomeLoading){
+        backgroundColor: AppColors.backGroundColor,
+        body: BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
+          if (state is HomeLoading) {
             return const PageShimmer();
-          } else if(state is HomeSuccess){
+          } else if (state is HomeSuccess) {
             return BlocProvider(
-              create:(_) => SearchCubit(state.products),
+              create: (_) => SearchCubit(state.products),
               child: HomeContent(products: state.products),
-              );
-          } else if(state is HomeFailure){
+            );
+          } else if (state is HomeFailure) {
             return Text(state.errMessage);
-          }else{
+          } else {
             return const SizedBox.shrink();
           }
-        }
-      )
-    );
+        }));
   }
 }
 
-class HomeContent extends StatefulWidget{
-  const HomeContent ({super.key, required this.products});
-final List<ProductModel> products;
+class HomeContent extends StatefulWidget {
+  const HomeContent({super.key, required this.products});
+  final List<ProductModel> products;
 
   @override
   State<HomeContent> createState() => _HomeContentState();
 }
 
 class _HomeContentState extends State<HomeContent> {
-
-  late List <ProductModel> filterdProducts;
+  late List<ProductModel> filterdProducts;
   @override
-void initState(){
-  super.initState();
-  filterdProducts=widget.products;
-}
-void filterByCategory(String category){
-if(category=='All'){
-  setState(() {
-    filterdProducts=widget.products;
-  });
-}else{
-  setState(() {
-    filterdProducts=widget.products.
-    where((product) => product.category==category).toList();
-  });
-}
-}
-@override
- Widget build(BuildContext context){
-  return SingleChildScrollView(
-        child: Padding(
-          padding:const EdgeInsets.symmetric(horizontal: 14, vertical: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CustomAppBar(),
-              const SizedBox(
-                height: 40,
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomSearchBar(),
-                  CustomCircleContainer(
-                      color: AppColors.primaryColor,
-                      child: Icon(
-                        Icons.filter_list,
-                        color: AppColors.cardColor,
-                      ))
-                ],
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              ListViewCategories(onCategorySelected:filterByCategory),
-              BlocBuilder<SearchCubit, SearchState>(
-                builder: (context, state) {
-                  if(state is SearchInitial){
-                    return CustomGridview(products: filterdProducts);
-                  }
-                   else if (state is SearchLoading) {
-                    return const PageShimmer();
-                  } else if (state is SearchSuccess) {
-                    if(state.product.isEmpty){
-                      return const Center(child: 
-                       Text('There are no products match this'));
-                    }else {
-                      return CustomGridview(products: state.product);
+  void initState() {
+    super.initState();
+    filterdProducts = widget.products;
+  }
+
+  void filterByCategory(String category) {
+    if (category == 'All') {
+      setState(() {
+        filterdProducts = widget.products;
+      });
+    } else {
+      setState(() {
+        filterdProducts = widget.products
+            .where((product) => product.category == category)
+            .toList();
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 30),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const CustomAppBar(),
+            const SizedBox(
+              height: 40,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomSearchBar(
+                  onChanged: (value) {
+                    if (value.isEmpty) {
+                      context.read<SearchCubit>().clearSearch();
+                    } else {
+                      context
+                          .read<SearchCubit>()
+                          .searchProductsInList(value, filterdProducts);
                     }
-                  } else if (state is SearchError) {
-                    return Center(child: Text(state.errMessage));
+                  },
+                ),
+                const CustomCircleContainer(
+                    color: AppColors.primaryColor,
+                    child: Icon(
+                      Icons.filter_list,
+                      color: AppColors.cardColor,
+                    ))
+              ],
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            ListViewCategories(onCategorySelected: filterByCategory),
+            BlocBuilder<SearchCubit, SearchState>(
+              builder: (context, state) {
+                if (state is SearchInitial) {
+                  return CustomGridview(products: filterdProducts);
+                } else if (state is SearchLoading) {
+                  return const PageShimmer();
+                } else if (state is SearchSuccess) {
+                  if (state.product.isEmpty) {
+                    return const Center(
+                        child: Text('There are no products match this'));
                   } else {
-                    return const SizedBox.shrink();
+                    return CustomGridview(products: state.product);
                   }
-                },
-              )
-            ],
-          ),
+                } else if (state is SearchError) {
+                  return Center(child: Text(state.errMessage));
+                } else {
+                  return const SizedBox.shrink();
+                }
+              },
+            )
+          ],
         ),
-      );
- }
+      ),
+    );
+  }
 }

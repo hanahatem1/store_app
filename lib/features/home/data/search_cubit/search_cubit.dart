@@ -7,10 +7,10 @@ part 'search_state.dart';
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.products) : super(SearchInitial());
 final List<ProductModel> products;
-  void searchProducts (String query){
+  void searchProductsInList (String query, List<ProductModel> list){
     emit(SearchLoading());
     try{
-      final filterd = products.where((product) =>product.title.toLowerCase().contains(query.toLowerCase())).toList();
+      final filterd = list.where((product) =>product.title.toLowerCase().contains(query.toLowerCase())).toList();
     emit(SearchSuccess(filterd));
     } catch(e){
       emit(SearchError('there is something error:$e'));
