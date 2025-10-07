@@ -4,6 +4,7 @@ import 'package:shopping_app/features/home/data/models/product_model.dart';
 abstract class CartState {}
 
 class CartInitial extends CartState {}
+class CartLoading extends CartState {}
 
 class CartSuccess extends CartState {
   final Map<ProductModel,int> items;
