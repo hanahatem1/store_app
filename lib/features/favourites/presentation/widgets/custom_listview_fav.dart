@@ -12,7 +12,7 @@ class CustomListviewFav extends StatefulWidget {
 }
 
 class _CustomListviewFavState extends State<CustomListviewFav> {
-  void initstate(){
+  void initState(){
     super.initState();
     context.read<FavouritesCubit>().getFavourites();
   }
