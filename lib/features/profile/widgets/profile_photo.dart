@@ -5,6 +5,8 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shopping_app/core/constant/app_colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class ProfilePhoto extends StatefulWidget {
   const ProfilePhoto({super.key});
@@ -17,6 +19,31 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
   final ImagePicker _imagePicker = ImagePicker();
   XFile? _image;
   bool _isUploading = false;
+  ImageProvider? _savedImage; 
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedImage(); 
+  }
+
+  Future<void> _loadSavedImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final base64Image = prefs.getString('profile_image');
+    if (base64Image != null) {
+      final bytes = base64Decode(base64Image);
+      setState(() {
+        _savedImage = MemoryImage(bytes);
+      });
+    }
+  }
+
+  Future<void> _saveImageToPrefs(File imageFile) async {
+    final prefs = await SharedPreferences.getInstance();
+    final bytes = await imageFile.readAsBytes();
+    final base64Image = base64Encode(bytes);
+    await prefs.setString('profile_image', base64Image);
+  }
 
   Future<void> _pickImage() async {
     try {
@@ -26,6 +53,7 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
         setState(() {
           _image = pickedImage;
         });
+        await _saveImageToPrefs(File(_image!.path)); 
         await _uploadImage(); 
       }
     } catch (e) {
@@ -77,8 +105,9 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
             width: 110,
             child: CircleAvatar(
               backgroundImage: _image != null
-                  ? FileImage(File(_image!.path)) as ImageProvider
-                  : const AssetImage('assets/images/p.png'),
+                  ? FileImage(File(_image!.path))
+                  : _savedImage ??
+                      const AssetImage('assets/images/p.png'),
             ),
           ),
           Positioned(
@@ -97,7 +126,8 @@ class _ProfilePhotoState extends State<ProfilePhoto> {
                       ? const SizedBox(
                           height: 15,
                           width: 15,
-                          child: CircularProgressIndicator(strokeWidth: 2))
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
                       : const Icon(Icons.add_a_photo_outlined, size: 15),
                 ),
               ),
